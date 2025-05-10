@@ -40,15 +40,33 @@ public class Main {
         arvore.inserir("-----", '0');
 
         arvore.imprimirArvore(arvore);
+        
+        // Frase de teste
+        String frase = "Super frase que testará tudo e todos com atenção";
+        String codigoMorse = arvore.letraParaCodigo(frase);
+
+        System.out.println("Frase original: " + frase);
+        System.out.println("Código Morse:     " + codigoMorse);
+        
+        String fraseMorse = "... --- ... / .- -. .-";  // SOS ANA
+
+        String resultado = arvore.codigoParaSimbolo(fraseMorse);
+
+        System.out.println("Código Morse: " + fraseMorse);
+        System.out.println("Texto traduzido: " + resultado);
+        
+        
         //TODO
         // Menu
-        // Opção de imprimir arvore
-        // Opção de mostrar a correspondencia entre letra e código
-        // Opção de inserir mensagem para que seja codificada em morse
-        // Opção de inserir mensagem em morse para ser decodificada
+	        // Opção de imprimir arvore
+        		// Arvore de codigos morse 
+        		// Arvore de letras
+	        // Opção de mostrar a correspondencia entre letra e código
+	        // Opção de inserir mensagem para que seja codificada em morse (colocar que pontuação e simbolos nao sao aceitos)
+	        // Opção de inserir mensagem em morse para ser decodificada (talvez colocar aqui ja a tabela de conversao de um para o outro)
         // Busca
-        // Metodo de busca na árvore, deve efetuar a busca dos caracters na arvore de acordo com o código colocado
-        // e deve retornar a letra ou numero correspondente ao codigo inserido
+        	// Busca de simbolos que retornam codigo morse
+        	// Busca de código morse que retorna os simbolos
         
     }
 }
