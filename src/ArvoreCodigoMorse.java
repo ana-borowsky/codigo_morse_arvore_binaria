@@ -1,11 +1,11 @@
 public class ArvoreCodigoMorse {
     private Node raiz;
     class Node {
-        private char letra;
+        private char simbolo;
         private Node esquerda, direita;
 
-        Node(char letra) {
-            this.letra = letra;
+        Node(char simbolo) {
+            this.simbolo = simbolo;
             this.esquerda = null;
             this.direita = null;
         }
@@ -30,7 +30,7 @@ public class ArvoreCodigoMorse {
                                                        
 
                 if (i == codigo.length() - 1)
-                    raiz.esquerda.letra = valor;
+                    raiz.esquerda.simbolo = valor;
 
                 raiz = raiz.esquerda;
             }
@@ -39,7 +39,7 @@ public class ArvoreCodigoMorse {
                     raiz.direita = new Node('#'); // A # é impressa nos nós que não contém simbolos
 
                 if (i == codigo.length() - 1)
-                    raiz.direita.letra = valor;
+                    raiz.direita.simbolo = valor;
 
                 raiz = raiz.direita;
             }
@@ -51,18 +51,66 @@ public class ArvoreCodigoMorse {
     public Node getRaiz() {
         return raiz;
     }
+    
+    public static String limpaPalavra(String palavra) {
+        palavra = palavra.toUpperCase();
+        StringBuilder limpa = new StringBuilder();
+
+        for (int i = 0; i < palavra.length(); i++) {
+            char letra = palavra.charAt(i);
+
+            switch (letra) {
+                case 'Á':
+                case 'À':
+                case 'Ã':
+                case 'Â':
+                    letra = 'A';
+                    break;
+                case 'É':
+                case 'Ê':
+                    letra = 'E';
+                    break;
+                case 'Í':
+                case 'Î':
+                    letra = 'I';
+                    break;
+                case 'Ó':
+                case 'Ô':
+                case 'Õ':
+                    letra = 'O';
+                    break;
+                case 'Ú':
+                case 'Ü':
+                    letra = 'U';
+                    break;
+                case 'Ç':
+                    letra = 'C';
+                    break;
+                default:
+                    break;
+            }
+
+            limpa.append(letra);
+        }
+
+        return limpa.toString();
+    }
 
     void desenhar(Node node, int nivel) {
         if (node == null) return;
+        
         desenhar(node.direita, nivel + 1);
+        
         for (int i = 0; i < nivel; i++) System.out.print("	");
-        System.out.println(node.letra);
+        
+        System.out.println(node.simbolo);
+        
         desenhar(node.esquerda, nivel + 1);
     }
 
-    void imprimirArvore(ArvoreCodigoMorse arvore){
+    void imprimirArvore(ArvoreCodigoMorse arvore) {
         System.out.println("\n\n Árvore desenhada - espaços vazios são representados por #:\n\n");
         arvore.desenhar(arvore.raiz, 0);
     }
-
+  
 }
