@@ -52,12 +52,12 @@ public class ArvoreCodigoMorse {
         return raiz;
     }
     
-    public static String limpaPalavra(String palavra) {
-        palavra = palavra.toUpperCase();
+    public static String limpaFrase(String frase) {
+        frase = frase.toUpperCase();
         StringBuilder limpa = new StringBuilder();
 
-        for (int i = 0; i < palavra.length(); i++) {
-            char letra = palavra.charAt(i);
+        for (int i = 0; i < frase.length(); i++) {
+            char letra = frase.charAt(i);
 
             switch (letra) {
                 case 'Á':
@@ -96,13 +96,40 @@ public class ArvoreCodigoMorse {
         return limpa.toString();
     }
     
-    void busca(String palavra) {
-    	palavra = limpaPalavra(palavra); // remove acentos e cedilhas
-    	
-        for (int i = 0; i < palavra.length(); i++) {
-            char letra = palavra.charAt(i);
+    private String buscaCodigo(Node node, char simbolo) {
+        if (node == null) return null;
+
+        if (node.dado.simbolo == simbolo) {
+            return node.dado.codigo;
         }
+
+        String esquerda = buscaCodigo(node.esquerda, simbolo);
+        if (esquerda != null) return esquerda;
+
+        return buscaCodigo(node.direita, simbolo);
     }
+    
+    public String letraParaCodigo(String frase) {
+        frase = limpaFrase(frase); // troca acentos e cedilhas
+
+        String resultado = "";
+
+        for (int i = 0; i < frase.length(); i++) {
+            char simbolo = frase.charAt(i);
+            String codigo = buscaCodigo(this.raiz, simbolo);
+            
+            if (simbolo == ' ') {
+            	resultado += ' ';
+            }
+            else if (codigo != null) {
+                resultado += codigo + " ";
+            } else {
+                resultado += "? ";
+            }
+        }
+
+        return resultado;
+    }  
 
     void desenhar(Node node, int nivel) {
         if (node == null) return;
@@ -111,13 +138,13 @@ public class ArvoreCodigoMorse {
         
         for (int i = 0; i < nivel; i++) System.out.print("	");
         
-        System.out.println(node.dado.codigo);
+        System.out.println(node.dado.simbolo); // dado.codigo mostra arvore de códigos e dado.simbolo mostra árvore de simbolos
         
         desenhar(node.esquerda, nivel + 1);
     }
 
     void imprimirArvore(ArvoreCodigoMorse arvore) {
-        System.out.println("\n\n Árvore desenhada - espaços vazios são representados por #:\n\n");
+        System.out.println("\n\n Árvore desenhada - nós com dados vazios são representados por #:\n\n");
         arvore.desenhar(arvore.raiz, 0);
     }
   
