@@ -1,11 +1,13 @@
+import codigo_morse_arvore_binaria.Tupla;
+
 public class ArvoreCodigoMorse {
     private Node raiz;
     class Node {
-        private char simbolo;
-        private Node esquerda, direita;
+        Tupla dado;
+        Node esquerda, direita;
 
-        Node(char simbolo) {
-            this.simbolo = simbolo;
+        public Node(Tupla dado) {
+            this.dado = dado;
             this.esquerda = null;
             this.direita = null;
         }
@@ -15,9 +17,9 @@ public class ArvoreCodigoMorse {
         raiz = inserir(raiz, valor, codigo);
     }
 
-    Node inserir(Node node, char valor, String codigo) {
+    Node inserir(Node node, char letra, String codigo) {
         if (node == null)
-            node = new Node('#');
+            node = new Node(new Tupla('#', "#")); // Padrão de tupla vazia
 
         Node raiz = node;
 
@@ -26,28 +28,26 @@ public class ArvoreCodigoMorse {
 
             if (codigoMorse == '.') {
                 if (raiz.esquerda == null)
-                    raiz.esquerda = new Node('#'); // A # é impressa nos nós que não contém simbolos
-                                                       
+                    raiz.esquerda = new Node(new Tupla('#', "#"));
 
                 if (i == codigo.length() - 1)
-                    raiz.esquerda.simbolo = valor;
+                    raiz.esquerda.dado = new Tupla(letra, codigo);
 
                 raiz = raiz.esquerda;
-            }
-            else if (codigoMorse == '-') {
+            } else if (codigoMorse == '-') {
                 if (raiz.direita == null)
-                    raiz.direita = new Node('#'); // A # é impressa nos nós que não contém simbolos
+                    raiz.direita = new Node(new Tupla('#', "#"));
 
                 if (i == codigo.length() - 1)
-                    raiz.direita.simbolo = valor;
+                    raiz.direita.dado = new Tupla(letra, codigo);
 
                 raiz = raiz.direita;
             }
         }
 
         return node;
-    }
-
+    } 
+    
     public Node getRaiz() {
         return raiz;
     }
@@ -111,7 +111,7 @@ public class ArvoreCodigoMorse {
         
         for (int i = 0; i < nivel; i++) System.out.print("	");
         
-        System.out.println(node.simbolo);
+        System.out.println(node.dado.codigo);
         
         desenhar(node.esquerda, nivel + 1);
     }

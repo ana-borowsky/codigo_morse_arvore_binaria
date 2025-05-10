@@ -42,10 +42,12 @@ public class Main {
         arvore.imprimirArvore(arvore);
         //TODO
         // Menu
-        // Opção de imprimir arvore
-        // Opção de mostrar a correspondencia entre letra e código
-        // Opção de inserir mensagem para que seja codificada em morse
-        // Opção de inserir mensagem em morse para ser decodificada
+	        // Opção de imprimir arvore
+        		// Arvore de codigos morse
+        		// Arvore de letras
+	        // Opção de mostrar a correspondencia entre letra e código
+	        // Opção de inserir mensagem para que seja codificada em morse
+	        // Opção de inserir mensagem em morse para ser decodificada
         // Busca
         // Metodo de busca na árvore, deve efetuar a busca dos caracters na arvore de acordo com o código colocado
         // e deve retornar a letra ou numero correspondente ao codigo inserido
