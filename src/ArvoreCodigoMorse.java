@@ -17,7 +17,7 @@ public class ArvoreCodigoMorse {
 
     Node inserir(Node node, char valor, String codigo) {
         if (node == null)
-            node = new Node(' ');
+            node = new Node('#');
 
         Node raiz = node;
 
@@ -26,8 +26,8 @@ public class ArvoreCodigoMorse {
 
             if (codigoMorse == '.') {
                 if (raiz.esquerda == null)
-                    raiz.esquerda = new Node('}'); // Retirar a chave, coloquei so para testar se estava sendo inserido os vazios quando
-                                                        // não tem nehuma letra, mas a letra seguinte esta ligada a esse no vazio
+                    raiz.esquerda = new Node('#'); // A # é impressa quando não tem nehuma letra/ número, mas o espaço existe
+                                                       
 
                 if (i == codigo.length() - 1)
                     raiz.esquerda.letra = valor;
@@ -36,8 +36,7 @@ public class ArvoreCodigoMorse {
             }
             else if (codigoMorse == '-') {
                 if (raiz.direita == null)
-                    raiz.direita = new Node('}'); // Retirar a chave, coloquei so para testar se estava sendo inserido os vazios quando
-                                                        // não tem nehuma letra, mas a letra seguinte esta ligada a esse no vazio
+                    raiz.direita = new Node('#'); // A # é impressa quando não tem nehuma letra/ número, mas o espaço existe
 
                 if (i == codigo.length() - 1)
                     raiz.direita.letra = valor;
@@ -56,7 +55,7 @@ public class ArvoreCodigoMorse {
     void desenhar(Node node, int nivel) {
         if (node == null) return;
         desenhar(node.direita, nivel + 1);
-        for (int i = 0; i < nivel; i++) System.out.print(" ");
+        for (int i = 0; i < nivel; i++) System.out.print("	");
         System.out.println(node.letra);
         desenhar(node.esquerda, nivel + 1);
     }
