@@ -95,6 +95,14 @@ public class ArvoreCodigoMorse {
 
         return limpa.toString();
     }
+    
+    void busca(String palavra) {
+    	palavra = limpaPalavra(palavra); // remove acentos e cedilhas
+    	
+        for (int i = 0; i < palavra.length(); i++) {
+            char letra = palavra.charAt(i);
+        }
+    }
 
     void desenhar(Node node, int nivel) {
         if (node == null) return;
