@@ -40,11 +40,15 @@ public class Main {
         arvore.inserir("-----", '0');
 
         arvore.imprimirArvore(arvore);
-
-        // Efetuar a inserção automática na árvore, pode por meio de um laço de repetição ou por meio de um arquivo csv
+        //TODO
+        // Menu
+        // Opção de imprimir arvore
+        // Opção de mostrar a correspondencia entre letra e código
+        // Opção de inserir mensagem para que seja codificada em morse
+        // Opção de inserir mensagem em morse para ser decodificada
+        // Busca
         // Metodo de busca na árvore, deve efetuar a busca dos caracters na arvore de acordo com o código colocado
         // e deve retornar a letra ou numero correspondente ao codigo inserido
-        // Menu, cotendo a opcao para mostrar a arvore e a opcao para o usuario inserir a mensagem
         
     }
 }
