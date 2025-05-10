@@ -26,7 +26,7 @@ public class ArvoreCodigoMorse {
 
             if (codigoMorse == '.') {
                 if (raiz.esquerda == null)
-                    raiz.esquerda = new Node('#'); // A # é impressa quando não tem nehuma letra/ número, mas o espaço existe
+                    raiz.esquerda = new Node('#'); // A # é impressa nos nós que não contém simbolos
                                                        
 
                 if (i == codigo.length() - 1)
@@ -36,7 +36,7 @@ public class ArvoreCodigoMorse {
             }
             else if (codigoMorse == '-') {
                 if (raiz.direita == null)
-                    raiz.direita = new Node('#'); // A # é impressa quando não tem nehuma letra/ número, mas o espaço existe
+                    raiz.direita = new Node('#'); // A # é impressa nos nós que não contém simbolos
 
                 if (i == codigo.length() - 1)
                     raiz.direita.letra = valor;
@@ -61,10 +61,7 @@ public class ArvoreCodigoMorse {
     }
 
     void imprimirArvore(ArvoreCodigoMorse arvore){
-        System.out.println("\n\n Árvore Desenhada:\n\n");
-        arvore.desenhar(arvore.raiz, 0);
-
-        System.out.println("Árvore Desenhada:\n\n");
+        System.out.println("\n\n Árvore desenhada - espaços vazios são representados por #:\n\n");
         arvore.desenhar(arvore.raiz, 0);
     }
 
