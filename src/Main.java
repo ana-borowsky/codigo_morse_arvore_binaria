@@ -42,11 +42,18 @@ public class Main {
         arvore.imprimirArvore(arvore);
         
         // Frase de teste
-        String frase = "SOS";
+        String frase = "Super frase que testará tudo e todos com atenção";
         String codigoMorse = arvore.letraParaCodigo(frase);
 
         System.out.println("Frase original: " + frase);
         System.out.println("Código Morse:     " + codigoMorse);
+        
+        String fraseMorse = "... --- ... / .- -. .-";  // SOS ANA
+
+        String resultado = arvore.codigoParaSimbolo(fraseMorse);
+
+        System.out.println("Código Morse: " + fraseMorse);
+        System.out.println("Texto traduzido: " + resultado);
         
         
         //TODO
@@ -55,8 +62,8 @@ public class Main {
         		// Arvore de codigos morse 
         		// Arvore de letras
 	        // Opção de mostrar a correspondencia entre letra e código
-	        // Opção de inserir mensagem para que seja codificada em morse
-	        // Opção de inserir mensagem em morse para ser decodificada
+	        // Opção de inserir mensagem para que seja codificada em morse (colocar que pontuação e simbolos nao sao aceitos)
+	        // Opção de inserir mensagem em morse para ser decodificada (talvez colocar aqui ja a tabela de conversao de um para o outro)
         // Busca
         	// Busca de simbolos que retornam codigo morse
         	// Busca de código morse que retorna os simbolos
