@@ -36,10 +36,11 @@ public class NavegacaoMenu {
 
                 case 4:
                     rodando = false;
+                    System.out.println(MensagensMenu.ENCERRA_PROGRAMA);
                     break;
 
                 default:
-                    System.out.println("Opção Inválida");
+                    System.out.println(MensagensMenu.OPCAO_INVALIDA);
                     break;
             }
         }
@@ -62,6 +63,10 @@ public class NavegacaoMenu {
 
             case 3:
                 break;
+
+            default:
+                System.out.println(MensagensMenu.OPCAO_INVALIDA);
+                break;
         }
 
     }
@@ -72,22 +77,27 @@ public class NavegacaoMenu {
 
         switch (opcaoSolicitacao){
             case 1:
-                System.out.println("\nDigite a mensagem que será codificada: ");
+                System.out.println(MensagensMenu.MENSAGEM_CODIFICA);
                 String frase = scanner.nextLine();
                 String textoCodificado = arvore.letraParaCodigo(frase);
-                System.out.println("Código Morse:     " + textoCodificado);
+                System.out.println(MensagensMenu.TEXTO_MORSE + textoCodificado);
                 break;
 
             case 2:
                 tabela.imprimirTabela();
-                System.out.println("\nDigite a mensagem que será decodificada: ");
+                System.out.println(MensagensMenu.MENSAGEM_DECODIFICADA);
                 String fraseCodificada = scanner.nextLine();
                 String resultado = arvore.codigoParaSimbolo(fraseCodificada);
-                System.out.println("Texto traduzido: " + resultado);
+                System.out.println(MensagensMenu.TEXTO_TRADUZIDO + resultado);
                 break;
 
             case 3:
                 break;
+
+            default:
+                System.out.println(MensagensMenu.OPCAO_INVALIDA);
+                break;
+
         }
 
     }
@@ -97,7 +107,7 @@ public class NavegacaoMenu {
             try {
                 return Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-               //
+                System.out.println(MensagensMenu.OPCAO_INVALIDA);
             }
         }
     }

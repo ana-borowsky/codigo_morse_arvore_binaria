@@ -1,6 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         ArvoreCodigoMorse arvore = new ArvoreCodigoMorse();
+        Menu menu = new Menu();
+        NavegacaoMenu navegacao = new NavegacaoMenu(menu, arvore);
 
         arvore.inserir(".-", 'A');
         arvore.inserir("-...",'B');
@@ -39,6 +41,7 @@ public class Main {
         arvore.inserir("----.", '9');
         arvore.inserir("-----", '0');
 
+        navegacao.executando();
         arvore.imprimirArvore(arvore);
         
         // Frase de teste
