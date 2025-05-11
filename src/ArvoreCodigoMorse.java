@@ -203,21 +203,27 @@ public class ArvoreCodigoMorse {
     }
 
 
-    void desenhar(Node node, int nivel) {
+    void desenhar(Node node, int nivel, String tipoArvore) {
         if (node == null) return;
         
-        desenhar(node.direita, nivel + 1);
+        desenhar(node.direita, nivel + 1, tipoArvore);
         
         for (int i = 0; i < nivel; i++) System.out.print("	");
-        
-        System.out.println(node.dado.simbolo); // dado.codigo mostra arvore de códigos e dado.simbolo mostra árvore de simbolos
-        
-        desenhar(node.esquerda, nivel + 1);
+
+        if (tipoArvore == "codigo") {
+            System.out.println(node.dado.codigo); // dado.codigo mostra arvore de códigos e dado.simbolo mostra árvore de simbolos
+        }
+
+        if (tipoArvore == "simbolo") {
+            System.out.println(node.dado.simbolo); // dado.codigo mostra arvore de códigos e dado.simbolo mostra árvore de simbolos
+        }
+
+        desenhar(node.esquerda, nivel + 1, tipoArvore);
     }
 
-    void imprimirArvore(ArvoreCodigoMorse arvore) {
+    void imprimirArvore(ArvoreCodigoMorse arvore, String tipoArvore) {
         System.out.println("\n\n Árvore desenhada - nós com dados vazios são representados por #:\n\n");
-        arvore.desenhar(arvore.raiz, 0);
+        arvore.desenhar(arvore.raiz, 0, tipoArvore);
     }
   
 }
