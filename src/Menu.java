@@ -16,6 +16,7 @@ public class Menu {
 
     public void mostrarArvoreMorse() {
         System.out.println(OpcoesMenu.ARVORE_CODIGO_MORSE);
+        
     }
 
     public void mostrarArvoreSimbolos() {

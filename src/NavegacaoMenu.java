@@ -53,12 +53,16 @@ public class NavegacaoMenu {
         switch (opcaoSolicitacao) {
             case 1:
                 menu.mostrarArvoreMorse();
-                arvore.imprimirArvore(arvore,"codigo");
+                System.out.println(Mensagens.MENSAGEM_ARVORE);
+                arvore.imprimir(arvore.raiz, 0, "codigo");
+                //arvore.imprimirArvore(arvore,"codigo");
                 break;
 
             case 2:
                 menu.mostrarArvoreSimbolos();
-                arvore.imprimirArvore(arvore,"simbolo");
+                System.out.println(Mensagens.MENSAGEM_ARVORE);
+                //arvore.imprimirArvore(arvore,"simbolo");
+                arvore.imprimir(arvore.raiz, 0, "simbolo");
                 break;
 
             case 3:

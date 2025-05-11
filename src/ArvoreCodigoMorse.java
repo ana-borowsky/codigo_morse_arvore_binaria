@@ -3,7 +3,10 @@ import codigo_morse_arvore_binaria.TabelaMorse;
 import codigo_morse_arvore_binaria.Tupla;
 
 public class ArvoreCodigoMorse {
-    private Node raiz;
+	private static final char SIMBOLO_INVALIDO = '?';
+	private static final char SIMBOLO_PADRAO = '#';
+	
+    Node raiz;
     
     class Node {
         Tupla dado;
@@ -20,7 +23,8 @@ public class ArvoreCodigoMorse {
         raiz = inserir(raiz, valor, codigo);
     }
     
-    Node inserir(Node node, char letra, String codigo) { //Insere um novo nó na árvore de código Morse com base no código fornecido.
+  //Insere um novo nó na árvore de código Morse com base no código fornecido.
+    Node inserir(Node node, char letra, String codigo) { 
         // Se o nó atual é null, cria um novo nó com uma tupla vazia Tupla('#', "#")
         if (node == null)
             node = new Node(new Tupla('#', "#")); // Nó temporário sem símbolos válidos
@@ -120,44 +124,62 @@ public class ArvoreCodigoMorse {
         return resultado;
     }
     
+    // Recebe um código morse e retorna o simbolo correspondente
     private char buscarSimbolo(Node node, String codigo) {
+        // Retorna um caractere inválido se o nó raiz ou o código forem nulos
+        if (node == null || codigo == null) return SIMBOLO_INVALIDO;
+        
+        // Começa a busca a partir da raiz da árvore
         Node atual = node;
-
-        for (int i = 0; i < codigo.length(); i++) {
-            char c = codigo.charAt(i);
+        
+        // Converte o código Morse (string) em um array de caracteres
+        char[] caracteres = codigo.toCharArray();
+        
+        // Percorre cada caractere (ponto ou traço) do código Morse
+        for (char c : caracteres) {
             if (c == '.') {
-                if (atual.esquerda != null)
-                    atual = atual.esquerda;
-                else
-                    return '#';
-            } else if (c == '-') {
-                if (atual.direita != null)
-                    atual = atual.direita;
-                else
-                    return '#';
-            } else {
-                return '#'; // caractere inválido
+                // Se for ponto, move para o filho da esquerda
+                if (atual.esquerda == null) return SIMBOLO_INVALIDO; // Se não existir, retorna inválido
+                atual = atual.esquerda;
+            }
+            else if (c == '-') {
+                // Se for traço, move para o filho da direita
+                if (atual.direita == null) return SIMBOLO_INVALIDO; // Se não existir, retorna inválido
+                atual = atual.direita;
+            }
+            else {
+                // Se houver qualquer outro caractere, também é considerado inválido
+                return SIMBOLO_INVALIDO;
             }
         }
-
-        return atual.dado.simbolo;
+        
+        // Após percorrer o caminho, retorna o símbolo se for válido; caso contrário, retorna inválido
+        return atual.dado.simbolo != SIMBOLO_PADRAO ? atual.dado.simbolo : SIMBOLO_INVALIDO;
     }
     
-    public String decodificar(String fraseMorse) { // Recebe frase em morse, retorna em letras e numeros
+ // Recebe frase em morse, retorna em letras e numeros
+    public String decodificar(String fraseMorse) {
         String resultado = "";
 
-        String[] codigos = fraseMorse.trim().split(" ");
+        // Divide a frase em palavras usando dois espaços como separadores
+        String[] palavrasMorse = fraseMorse.trim().split(" {2}");
 
-        for (String codigo : codigos) {
-            if (codigo.equals("/")) { // separação de palavras
-                resultado += " ";
-            } else {
+        for (int i = 0; i < palavrasMorse.length; i++) {
+            // Divide cada palavra em códigos Morse individuais
+            String[] codigos = palavrasMorse[i].split(" ");
+
+            for (String codigo : codigos) {
                 char simbolo = buscarSimbolo(this.raiz, codigo);
-                if (simbolo != '#') {
+                if (simbolo != SIMBOLO_PADRAO) {
                     resultado += simbolo;
                 } else {
-                    resultado += "?"; // símbolo não encontrado
+                    resultado += SIMBOLO_INVALIDO; // símbolo não encontrado
                 }
+            }
+
+            // Adiciona espaço entre palavras, exceto após a última palavra
+            if (i < palavrasMorse.length - 1) {
+                resultado += " ";
             }
         }
 
@@ -165,10 +187,10 @@ public class ArvoreCodigoMorse {
     }
 
  // Desenha a árvore binária ou de simbolos ou de códigos
-    void desenhar(Node node, int nivel, String tipoArvore) { 
+    void imprimir(Node node, int nivel, String tipoArvore) { 
         if (node == null) return;
         
-        desenhar(node.direita, nivel + 1, tipoArvore);
+        imprimir(node.direita, nivel + 1, tipoArvore);
         
         for (int i = 0; i < nivel; i++) System.out.print("	");
 
@@ -180,13 +202,7 @@ public class ArvoreCodigoMorse {
             System.out.println(node.dado.simbolo); 
         }
 
-        desenhar(node.esquerda, nivel + 1, tipoArvore);
-    }
-
- // Imprime a árvore mostrando uma mensagem e colocando o tipo da árvore a ser impressa
-    void imprimirArvore(ArvoreCodigoMorse arvore, String tipoArvore) { 
-        System.out.println(Mensagens.MENSAGEM_ARVORE);
-        arvore.desenhar(arvore.raiz, 0, tipoArvore);
+        imprimir(node.esquerda, nivel + 1, tipoArvore);
     }
   
 }
