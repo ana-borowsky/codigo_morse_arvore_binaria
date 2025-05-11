@@ -4,13 +4,12 @@ public class NavegacaoMenu {
     public ArvoreCodigoMorse arvore;
     public Menu menu;
 
-
     public NavegacaoMenu(Menu menu, ArvoreCodigoMorse arvoreMorse) {
         this.menu = menu;
         this.arvore = arvoreMorse;
     }
 
-    ListasLetraCodigo listaCodigoMorse = new ListasLetraCodigo();
+    ElementosArvore listaCodigoMorse = new ElementosArvore();
     private final Scanner scanner = new Scanner(System.in);
 
     public void executando() {
@@ -36,11 +35,11 @@ public class NavegacaoMenu {
 
                 case 4:
                     rodando = false;
-                    System.out.println(MensagensMenu.ENCERRA_PROGRAMA);
+                    System.out.println(Mensagens.ENCERRA_PROGRAMA);
                     break;
 
                 default:
-                    System.out.println(MensagensMenu.OPCAO_INVALIDA);
+                    System.out.println(Mensagens.OPCAO_INVALIDA);
                     break;
             }
         }
@@ -57,7 +56,7 @@ public class NavegacaoMenu {
                 break;
 
             case 2:
-                menu.mostrarArvoreLetras();
+                menu.mostrarArvoreSimbolos();
                 arvore.imprimirArvore(arvore,"simbolo");
                 break;
 
@@ -65,7 +64,7 @@ public class NavegacaoMenu {
                 break;
 
             default:
-                System.out.println(MensagensMenu.OPCAO_INVALIDA);
+                System.out.println(Mensagens.OPCAO_INVALIDA);
                 break;
         }
 
@@ -77,25 +76,25 @@ public class NavegacaoMenu {
 
         switch (opcaoSolicitacao) {
             case 1:
-                System.out.println(MensagensMenu.MENSAGEM_CODIFICA);
+                System.out.println(Mensagens.MENSAGEM_CODIFICA);
                 String frase = scanner.nextLine();
-                String textoCodificado = arvore.letraParaCodigo(frase);
-                System.out.println(MensagensMenu.TEXTO_MORSE + textoCodificado);
+                String textoCodificado = arvore.codificar(frase);
+                System.out.println(Mensagens.TEXTO_MORSE + textoCodificado);
                 break;
 
             case 2:
                 listaCodigoMorse.imprimirTabela();
-                System.out.println(MensagensMenu.MENSAGEM_DECODIFICADA);
+                System.out.println(Mensagens.MENSAGEM_DECODIFICADA);
                 String fraseCodificada = scanner.nextLine();
-                String resultado = arvore.codigoParaSimbolo(fraseCodificada);
-                System.out.println(MensagensMenu.TEXTO_TRADUZIDO + resultado);
+                String resultado = arvore.decodificar(fraseCodificada);
+                System.out.println(Mensagens.TEXTO_TRADUZIDO + resultado);
                 break;
 
             case 3:
                 break;
 
             default:
-                System.out.println(MensagensMenu.OPCAO_INVALIDA);
+                System.out.println(Mensagens.OPCAO_INVALIDA);
                 break;
 
         }
@@ -107,7 +106,7 @@ public class NavegacaoMenu {
             try {
                 return Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println(MensagensMenu.OPCAO_INVALIDA);
+                System.out.println(Mensagens.OPCAO_INVALIDA);
             }
         }
     }
