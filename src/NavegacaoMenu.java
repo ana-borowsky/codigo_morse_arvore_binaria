@@ -81,6 +81,7 @@ public class NavegacaoMenu {
 
         switch (opcaoSolicitacao) {
             case 1:
+            	System.out.println(Mensagens.MENSAGEM_SIMBOLOS);
                 System.out.println(Mensagens.MENSAGEM_CODIFICA);
                 String frase = scanner.nextLine();
                 String textoCodificado = arvore.codificar(frase);
@@ -90,6 +91,7 @@ public class NavegacaoMenu {
             case 2:
                 System.out.println(OpcoesMenu.TABELA_LETRA_CODIGO);
                 TabelaMorse.imprimirTabela();
+                System.out.println(Mensagens.MENSAGEM_MORSE);
                 System.out.println(Mensagens.MENSAGEM_DECODIFICADA);
                 String fraseCodificada = scanner.nextLine();
                 String resultado = arvore.decodificar(fraseCodificada);
