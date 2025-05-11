@@ -1,6 +1,6 @@
 public class OpcoesMenu {
 
-    public static final String MENU = "\n|---------------MENU---------------|";
+    public static final String MENU = "\n|------------MENU------------|";
 
     public static final String IMPRIMIR_ARVORE = "Imprimir árvore";
     public static final String ARVORE_CODIGO_MORSE = "Árvore dos códigos morse";
