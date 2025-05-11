@@ -11,8 +11,6 @@ public class Menu {
 		}
 	}
 	
-	
-	
     public void menuPrincipal() {
         System.out.println(OpcoesMenu.MENU);
         String[] opcoes = {OpcoesMenu.IMPRIMIR_ARVORE, OpcoesMenu.TABELA_LETRA_CODIGO, OpcoesMenu.MENSAGEM, OpcoesMenu.SAIR};
