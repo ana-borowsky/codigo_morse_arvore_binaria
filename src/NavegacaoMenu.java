@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import codigo_morse_arvore_binaria.TabelaMorse;
+
 public class NavegacaoMenu {
     public ArvoreCodigoMorse arvore;
     public Menu menu;
@@ -9,7 +11,6 @@ public class NavegacaoMenu {
         this.arvore = arvoreMorse;
     }
 
-    ElementosArvore listaCodigoMorse = new ElementosArvore();
     private final Scanner scanner = new Scanner(System.in);
 
     public void executando() {
@@ -26,7 +27,7 @@ public class NavegacaoMenu {
 
                 case 2:
                     menu.mostratabela();
-                    listaCodigoMorse.imprimirTabela();
+                    TabelaMorse.imprimirTabela();
                     break;
 
                 case 3:
@@ -52,12 +53,16 @@ public class NavegacaoMenu {
         switch (opcaoSolicitacao) {
             case 1:
                 menu.mostrarArvoreMorse();
-                arvore.imprimirArvore(arvore,"codigo");
+                System.out.println(Mensagens.MENSAGEM_ARVORE);
+                arvore.imprimir(arvore.raiz, 0, "codigo");
+                //arvore.imprimirArvore(arvore,"codigo");
                 break;
 
             case 2:
                 menu.mostrarArvoreSimbolos();
-                arvore.imprimirArvore(arvore,"simbolo");
+                System.out.println(Mensagens.MENSAGEM_ARVORE);
+                //arvore.imprimirArvore(arvore,"simbolo");
+                arvore.imprimir(arvore.raiz, 0, "simbolo");
                 break;
 
             case 3:
@@ -83,7 +88,8 @@ public class NavegacaoMenu {
                 break;
 
             case 2:
-                listaCodigoMorse.imprimirTabela();
+                System.out.println(OpcoesMenu.TABELA_LETRA_CODIGO);
+                TabelaMorse.imprimirTabela();
                 System.out.println(Mensagens.MENSAGEM_DECODIFICADA);
                 String fraseCodificada = scanner.nextLine();
                 String resultado = arvore.decodificar(fraseCodificada);
