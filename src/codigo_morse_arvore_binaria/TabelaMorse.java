@@ -16,18 +16,14 @@ public class TabelaMorse {
 
     private TabelaMorse() {}
     
-    public static void criarTabela(String[] tabelaCodigo, char[] tabelaLetra) {
-        for(int i = 0; i < tabelaCodigo.length && i < tabelaLetra.length; i ++) {
-            System.out.printf("%-10s  %-5s |\t", tabelaCodigo[i], tabelaLetra[i]);
+    public static void imprimirTabela() {
+        for(int i = 0; i < CODIGOS.length && i < SIMBOLOS.length; i ++) {
+            System.out.printf("%-10s  %-5s |\t", CODIGOS[i], SIMBOLOS[i]);
 
             if ((i + 1) % 4 == 0) {
                 System.out.println();
             }
         }
-    }
-
-    public static void imprimirTabela() {
-        criarTabela(CODIGOS, SIMBOLOS);
     }
 
 }

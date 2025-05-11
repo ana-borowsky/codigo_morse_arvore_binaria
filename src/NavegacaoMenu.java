@@ -84,6 +84,7 @@ public class NavegacaoMenu {
                 break;
 
             case 2:
+                System.out.println(OpcoesMenu.TABELA_LETRA_CODIGO);
                 TabelaMorse.imprimirTabela();
                 System.out.println(Mensagens.MENSAGEM_DECODIFICADA);
                 String fraseCodificada = scanner.nextLine();

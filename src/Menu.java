@@ -23,7 +23,7 @@ public class Menu {
     }
 
     public void mostratabela() {
-        System.out.println(OpcoesMenu.TABELA_LETRA_CODIGO);
+        System.out.println(Mensagens.DESTAQUE + OpcoesMenu.TABELA_LETRA_CODIGO);
     }
 
     public void menuMensagem() {

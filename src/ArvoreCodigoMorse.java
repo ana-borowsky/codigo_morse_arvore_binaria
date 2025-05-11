@@ -56,7 +56,7 @@ public class ArvoreCodigoMorse {
         }
     }
      
-    private String buscaCodigo(Node node, char simbolo) {
+    private String buscaCodigo(Node node, char simbolo) { // Este seria o método buscar() pedido pelo professor. O nome é diferente pois temos a busca de códigos e a de simbolos
         if (node == null) return null;
 
         if (node.dado.simbolo == simbolo) {

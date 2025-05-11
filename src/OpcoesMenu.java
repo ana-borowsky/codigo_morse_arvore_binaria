@@ -6,7 +6,7 @@ public class OpcoesMenu {
     public static final String ARVORE_CODIGO_MORSE = "Árvore dos códigos morse";
     public static final String ARVORE_LETRAS = "Árvore dos símbolos";
 
-    public static final String TABELA_LETRA_CODIGO = "Mostrar tabela de conversão";
+    public static final String TABELA_LETRA_CODIGO = "Tabela de conversão";
     public static final String MENSAGEM = "Inserir mensagem";
 
     public static final String MENSAGEM_COMUM = "Codificar mensagem";
