@@ -9,8 +9,8 @@ public class OpcoesMenu {
     public static final String TABELA_LETRA_CODIGO = "Mostrar tabela de conversão";
     public static final String MENSAGEM = "Inserir mensagem";
 
-    public static final String MENSAGEM_COMUM = "Mensagem em código morse";
-    public static final String MENSAGEM_MORSE = "Mensagem em código morse";
+    public static final String MENSAGEM_COMUM = "Codificar mensagem";
+    public static final String MENSAGEM_MORSE = "Decodificar mensagem";
 
     public static final String VOLTAR = "Voltar";
     public static final String SAIR = "Sair";
