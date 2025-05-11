@@ -25,14 +25,13 @@ public class ListasLetraCodigo {
         inserirArvore(codigosMorse, letras, arvore);
     }
 
-    public void formarTabela(String[] tabelaCodigo, char[] tabelaLetra){
-        for(int i = 0; i < tabelaCodigo.length && i < tabelaLetra.length; i ++){
+    public void formarTabela(String[] tabelaCodigo, char[] tabelaLetra) {
+        for(int i = 0; i < tabelaCodigo.length && i < tabelaLetra.length; i ++) {
             System.out.printf("%-10s  %-5s |\t", tabelaCodigo[i], tabelaLetra[i]);
 
             if ((i + 1) % 4 == 0) {
                 System.out.println();
             }
-
         }
     }
 
