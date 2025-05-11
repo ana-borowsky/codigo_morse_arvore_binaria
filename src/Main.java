@@ -3,12 +3,11 @@ public class Main {
     	System.out.println(Mensagens.BOAS_VINDAS);	
     	
         ArvoreCodigoMorse arvore = new ArvoreCodigoMorse();
+        arvore.inicializar();
         Menu menu = new Menu();
 
         NavegacaoMenu navegacao = new NavegacaoMenu(menu, arvore);
-        ElementosArvore listaCodigoMorse = new ElementosArvore();
-
-        listaCodigoMorse.insercaoElementoArvore(arvore);
+        
         navegacao.executando();
     }
 }

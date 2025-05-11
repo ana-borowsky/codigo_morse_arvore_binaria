@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import codigo_morse_arvore_binaria.TabelaMorse;
+
 public class NavegacaoMenu {
     public ArvoreCodigoMorse arvore;
     public Menu menu;
@@ -9,7 +11,6 @@ public class NavegacaoMenu {
         this.arvore = arvoreMorse;
     }
 
-    ElementosArvore listaCodigoMorse = new ElementosArvore();
     private final Scanner scanner = new Scanner(System.in);
 
     public void executando() {
@@ -26,7 +27,7 @@ public class NavegacaoMenu {
 
                 case 2:
                     menu.mostratabela();
-                    listaCodigoMorse.imprimirTabela();
+                    TabelaMorse.imprimirTabela();
                     break;
 
                 case 3:
@@ -83,7 +84,7 @@ public class NavegacaoMenu {
                 break;
 
             case 2:
-                listaCodigoMorse.imprimirTabela();
+                TabelaMorse.imprimirTabela();
                 System.out.println(Mensagens.MENSAGEM_DECODIFICADA);
                 String fraseCodificada = scanner.nextLine();
                 String resultado = arvore.decodificar(fraseCodificada);

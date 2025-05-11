@@ -1,4 +1,5 @@
 import codigo_morse_arvore_binaria.Formatadora;
+import codigo_morse_arvore_binaria.TabelaMorse;
 import codigo_morse_arvore_binaria.Tupla;
 
 public class ArvoreCodigoMorse {
@@ -48,6 +49,12 @@ public class ArvoreCodigoMorse {
 
         return node;
     } 
+    
+    public void inicializar() {
+        for (int i = 0; i < TabelaMorse.CODIGOS.length; i++) {
+            this.inserir(TabelaMorse.CODIGOS[i], TabelaMorse.SIMBOLOS[i]);
+        }
+    }
      
     private String buscaCodigo(Node node, char simbolo) {
         if (node == null) return null;
@@ -147,7 +154,7 @@ public class ArvoreCodigoMorse {
         desenhar(node.esquerda, nivel + 1, tipoArvore);
     }
 
-    void imprimirArvore(ArvoreCodigoMorse arvore, String tipoArvore) {
+    void imprimirArvore(ArvoreCodigoMorse arvore, String tipoArvore) { // Imprime a árvore mostrando uma mensagem e colocando o tipo da árvore a ser impressa
         System.out.println(Mensagens.MENSAGEM_ARVORE);
         arvore.desenhar(arvore.raiz, 0, tipoArvore);
     }
