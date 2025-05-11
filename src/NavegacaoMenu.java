@@ -55,13 +55,11 @@ public class NavegacaoMenu {
                 menu.mostrarArvoreMorse();
                 System.out.println(Mensagens.MENSAGEM_ARVORE);
                 arvore.imprimir(arvore.raiz, 0, "codigo");
-                //arvore.imprimirArvore(arvore,"codigo");
                 break;
 
             case 2:
                 menu.mostrarArvoreSimbolos();
                 System.out.println(Mensagens.MENSAGEM_ARVORE);
-                //arvore.imprimirArvore(arvore,"simbolo");
                 arvore.imprimir(arvore.raiz, 0, "simbolo");
                 break;
 
@@ -104,7 +102,6 @@ public class NavegacaoMenu {
             default:
             	menu.exibirErroDeInput();
                 break;
-
         }
 
     }
