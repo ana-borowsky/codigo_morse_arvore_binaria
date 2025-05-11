@@ -1,9 +1,9 @@
 ## 🌲 Tradutor Morse com Árvore Binária
 Atividade da disciplina Resolução de problemas estruturados em computação.
-Este projeto implementa uma *árvore binária* que mapeia letras e números para seus respectivos *códigos Morse* e vice-versa. 
+Este projeto implementa uma *árvore binária* que mapeia letras e números para seus respectivos *códigos Morse* e vice-versa.
 A árvore é construída com base nas regras do código Morse e permite traduções nos dois sentidos.
 
-A árvore é construída da seguinte maneira: 
+A árvore é construída da seguinte maneira:
 
 - Para a direita, adicionam-se traços ao código morse
 - Para a esquerda, adicionam-se pontos.
@@ -23,9 +23,9 @@ A árvore, ao final, segue este formato:
 - ArvoreCodigoMorse: Responsável por gerar a árvore e todas as funções relacionadas a ela
   - Node: Nó utilizado na árvore binária
     - Tupla: É a informação de cada nó
-- TabelaMorse: responsável pelos itens que serão salvos na árvore e e impressão da tabela de conversão
+- TabelaMorse: Responsável pelos itens que serão salvos na árvore e e impressão da tabela de conversão
 - Menu: gera os menus do programa
-  - OpcoesMenu: "struct" com as opções do menu
+  - OpcoesMenu: "Struct" com as opções do menu
   - Mensagens: "Struct" com as mensagens para uso no programa
   - NavegacaoMenu: Responsável pela navegação
 - Formatadora: Formata o input do usuário, removendo acentos e cedilhas
