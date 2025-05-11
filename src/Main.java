@@ -4,9 +4,8 @@ public class Main {
     	
         ArvoreCodigoMorse arvore = new ArvoreCodigoMorse();
         arvore.inicializar();
-        Menu menu = new Menu();
 
-        NavegacaoMenu navegacao = new NavegacaoMenu(menu, arvore);
+        NavegacaoMenu navegacao = new NavegacaoMenu(arvore);
         
         navegacao.executando();
     }

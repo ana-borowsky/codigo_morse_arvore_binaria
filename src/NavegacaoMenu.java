@@ -6,8 +6,8 @@ public class NavegacaoMenu {
     public ArvoreCodigoMorse arvore;
     public Menu menu;
 
-    public NavegacaoMenu(Menu menu, ArvoreCodigoMorse arvoreMorse) {
-        this.menu = menu;
+    public NavegacaoMenu(ArvoreCodigoMorse arvoreMorse) {
+        this.menu = Menu.getInstance();
         this.arvore = arvoreMorse;
     }
 
@@ -40,7 +40,7 @@ public class NavegacaoMenu {
                     break;
 
                 default:
-                    System.out.println(Mensagens.OPCAO_INVALIDA);
+                	menu.exibirErroDeInput();
                     break;
             }
         }
@@ -69,7 +69,7 @@ public class NavegacaoMenu {
                 break;
 
             default:
-                System.out.println(Mensagens.OPCAO_INVALIDA);
+            	menu.exibirErroDeInput();
                 break;
         }
 
@@ -100,7 +100,7 @@ public class NavegacaoMenu {
                 break;
 
             default:
-                System.out.println(Mensagens.OPCAO_INVALIDA);
+            	menu.exibirErroDeInput();
                 break;
 
         }
@@ -112,7 +112,7 @@ public class NavegacaoMenu {
             try {
                 return Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println(Mensagens.OPCAO_INVALIDA);
+            	Menu.getInstance().exibirErroDeInput();
             }
         }
     }

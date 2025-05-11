@@ -1,4 +1,18 @@
 public class Menu {
+	public static Menu instance = null;
+	
+	public static Menu getInstance() {
+		if(instance == null) {
+			instance = new Menu();
+			return instance;
+		}
+		else {
+			return instance;
+		}
+	}
+	
+	
+	
     public void menuPrincipal() {
         System.out.println(OpcoesMenu.MENU);
         String[] opcoes = {OpcoesMenu.IMPRIMIR_ARVORE, OpcoesMenu.TABELA_LETRA_CODIGO, OpcoesMenu.MENSAGEM, OpcoesMenu.SAIR};
@@ -38,6 +52,11 @@ public class Menu {
         for( int i = 0 ; i < opcoes.length; i ++) {
             System.out.printf("[ %d ] %s%n", i + 1, opcoes[i]);
         }
+    }
+    
+    public void exibirErroDeInput() {
+    	System.out.println(Mensagens.OPCAO_INVALIDA);
+    	imprimirSetaInput();
     }
     
     private void imprimirSetaInput() {
