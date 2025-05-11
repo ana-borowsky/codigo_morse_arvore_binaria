@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
 public class NavegacaoMenu {
+    TabelaConversao tabela = new TabelaConversao();
     public ArvoreCodigoMorse arvore;
     public Menu menu;
+
 
     public NavegacaoMenu(Menu menu, ArvoreCodigoMorse arvoreMorse) {
         this.menu = menu;
@@ -25,7 +27,7 @@ public class NavegacaoMenu {
 
                 case 2:
                     menu.mostratabela();
-                    // Adicionar o metodo para mostrar a tabela
+                    tabela.imprimirTabela();
                     break;
 
                 case 3:
@@ -70,14 +72,15 @@ public class NavegacaoMenu {
 
         switch (opcaoSolicitacao){
             case 1:
-                System.out.println("Digite a mensagem que será codificada: ");
+                System.out.println("\nDigite a mensagem que será codificada: ");
                 String frase = scanner.nextLine();
                 String textoCodificado = arvore.letraParaCodigo(frase);
                 System.out.println("Código Morse:     " + textoCodificado);
                 break;
 
             case 2:
-                System.out.println("Digite a mensagem que será decodificada: ");
+                tabela.imprimirTabela();
+                System.out.println("\nDigite a mensagem que será decodificada: ");
                 String fraseCodificada = scanner.nextLine();
                 String resultado = arvore.codigoParaSimbolo(fraseCodificada);
                 System.out.println("Texto traduzido: " + resultado);
