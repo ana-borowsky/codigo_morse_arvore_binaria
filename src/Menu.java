@@ -42,8 +42,4 @@ public class Menu {
     private void imprimirSetaInput() {
     	System.out.print(">> ");
     }
-    
-    private void segurarParaContinuar() {
-    	
-    }
 }
