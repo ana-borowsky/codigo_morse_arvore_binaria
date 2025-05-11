@@ -1,7 +1,14 @@
 ## 🌲 Tradutor Morse com Árvore Binária
-Atividade da disciplina Resolução de problemas estruturados em computação
+Atividade da disciplina Resolução de problemas estruturados em computação.
 Este projeto implementa uma *árvore binária* que mapeia letras e números para seus respectivos *códigos Morse* e vice-versa. 
 A árvore é construída com base nas regras do código Morse e permite traduções nos dois sentidos.
+
+A árvore é construída da seguinte maneira: 
+
+- Para a direita, adicionam-se traços ao código morse
+- Para a esquerda, adicionam-se pontos.
+
+A árvore, ao final, segue este formato:
 
 ![Image](https://github.com/user-attachments/assets/cb3a6ff9-c3ce-48ac-a409-ffb46b0cb84c)
 
