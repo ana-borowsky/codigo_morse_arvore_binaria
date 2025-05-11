@@ -1,3 +1,4 @@
+import codigo_morse_arvore_binaria.Formatadora;
 import codigo_morse_arvore_binaria.Tupla;
 
 public class ArvoreCodigoMorse {
@@ -16,7 +17,7 @@ public class ArvoreCodigoMorse {
     void inserir(String codigo, char valor) {
         raiz = inserir(raiz, valor, codigo);
     }
-
+    
     Node inserir(Node node, char letra, String codigo) {
         if (node == null)
             node = new Node(new Tupla('#', "#")); // Padrão de tupla vazia
@@ -47,55 +48,7 @@ public class ArvoreCodigoMorse {
 
         return node;
     } 
-    
-    public Node getRaiz() {
-        return raiz;
-    }
-    
-    public static String limpaFrase(String frase) {
-        frase = frase.toUpperCase();
-        StringBuilder limpa = new StringBuilder();
-
-        for (int i = 0; i < frase.length(); i++) {
-            char letra = frase.charAt(i);
-
-            switch (letra) {
-                case 'Á':
-                case 'À':
-                case 'Ã':
-                case 'Â':
-                    letra = 'A';
-                    break;
-                case 'É':
-                case 'Ê':
-                    letra = 'E';
-                    break;
-                case 'Í':
-                case 'Î':
-                    letra = 'I';
-                    break;
-                case 'Ó':
-                case 'Ô':
-                case 'Õ':
-                    letra = 'O';
-                    break;
-                case 'Ú':
-                case 'Ü':
-                    letra = 'U';
-                    break;
-                case 'Ç':
-                    letra = 'C';
-                    break;
-                default:
-                    break;
-            }
-
-            limpa.append(letra);
-        }
-
-        return limpa.toString();
-    }
-    
+     
     private String buscaCodigo(Node node, char simbolo) {
         if (node == null) return null;
 
@@ -109,34 +62,8 @@ public class ArvoreCodigoMorse {
         return buscaCodigo(node.direita, simbolo);
     }
     
-    public char codigoParaLetra(String codigo) {
-        Node atual = this.raiz;
-
-        for (int i = 0; i < codigo.length(); i++) {
-            char sinal = codigo.charAt(i);
-
-            if (sinal == '.') {
-                if (atual.esquerda != null) {
-                    atual = atual.esquerda;
-                } else {
-                    return '?'; // Caminho inválido
-                }
-            } else if (sinal == '-') {
-                if (atual.direita != null) {
-                    atual = atual.direita;
-                } else {
-                    return '?'; // Caminho inválido
-                }
-            } else {
-                return '?'; // Símbolo inválido (nem . nem -)
-            }
-        }
-
-        return atual.dado.simbolo;
-    }
-    
-    public String letraParaCodigo(String frase) {
-        frase = limpaFrase(frase); // troca acentos e cedilhas
+    public String codificar(String frase) { // Recebe a frase em caracteres e numeros e retorna em codigo morse
+        frase = Formatadora.limpaFrase(frase); // troca acentos e cedilhas para poder ter o equivalente correto para buscar o código morse -> ex: atenção vira atencao
 
         String resultado = "";
 
@@ -181,7 +108,7 @@ public class ArvoreCodigoMorse {
         return atual.dado.simbolo;
     }
     
-    public String codigoParaSimbolo(String fraseMorse) {
+    public String decodificar(String fraseMorse) { // Recebe frase em morse, retorna em letras e numeros
         String resultado = "";
 
         String[] codigos = fraseMorse.trim().split(" ");
@@ -202,8 +129,7 @@ public class ArvoreCodigoMorse {
         return resultado;
     }
 
-
-    void desenhar(Node node, int nivel, String tipoArvore) {
+    void desenhar(Node node, int nivel, String tipoArvore) { // Desenha a árvore binária ou de simbolos ou de códigos
         if (node == null) return;
         
         desenhar(node.direita, nivel + 1, tipoArvore);
@@ -211,18 +137,18 @@ public class ArvoreCodigoMorse {
         for (int i = 0; i < nivel; i++) System.out.print("	");
 
         if (tipoArvore == "codigo") {
-            System.out.println(node.dado.codigo); // dado.codigo mostra arvore de códigos e dado.simbolo mostra árvore de simbolos
+            System.out.println(node.dado.codigo); 
         }
 
         if (tipoArvore == "simbolo") {
-            System.out.println(node.dado.simbolo); // dado.codigo mostra arvore de códigos e dado.simbolo mostra árvore de simbolos
+            System.out.println(node.dado.simbolo); 
         }
 
         desenhar(node.esquerda, nivel + 1, tipoArvore);
     }
 
     void imprimirArvore(ArvoreCodigoMorse arvore, String tipoArvore) {
-        System.out.println("\n\n Árvore desenhada - nós com dados vazios são representados por #:\n\n");
+        System.out.println(Mensagens.MENSAGEM_ARVORE);
         arvore.desenhar(arvore.raiz, 0, tipoArvore);
     }
   
